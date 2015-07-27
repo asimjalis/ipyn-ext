@@ -4,7 +4,7 @@ IPython Notebook Extensions
 Table of Contents
 -----------------
 
-Why use this? 
+Why should I use this? 
 
 - Generates table of contents in your IPython Notebook based on 
   H1 and H2 headers.
@@ -25,7 +25,7 @@ How can I use this?
 Heading Scroll Manager
 ----------------------
 
-Why use this?
+Why should I use this?
 
 - Imagine you are presenting a class with your IPython Notebook. You
   want to talk about one topic, the scroll to the next heading.
