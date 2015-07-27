@@ -16,11 +16,11 @@ How can I use this?
 - Add these lines to a markdown cell near the top of your IPython
   Notebook where you want the TOC to appear.
 
-        <h1 id="tocheading">Table of Contents</h1>
-        <div id="toc"></div>
-        <script>
-        $.getScript('http://asimjalis.github.io/ipyn-ext/js/ipyn-toc.js')
-        </script>
+      <h1 id="tocheading">Table of Contents</h1>
+      <div id="toc"></div>
+      <script>
+      $.getScript('http://asimjalis.github.io/ipyn-ext/js/ipyn-toc.js')
+      </script>
 
 Heading Scroll Manager
 ----------------------
@@ -39,6 +39,6 @@ How can I use this?
 - Insert the following lines to a markdown cell near the top of your
   IPython Notebook.
 
-        <script>
-        $.getScript('http://asimjalis.github.io/ipyn-ext/js/ipyn-heading-scroll-manager.js')
-        </script>
+      <script>
+      $.getScript('http://asimjalis.github.io/ipyn-ext/js/ipyn-heading-scroll-manager.js')
+      </script>
