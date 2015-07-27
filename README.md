@@ -18,9 +18,12 @@ How can I use this?
 
       <h1 id="tocheading">Table of Contents</h1>
       <div id="toc"></div>
-      <script>
+
+- Then at the bottom of your notebook add these lines in a code cell
+  and hit the play button.
+
+      %%javascript
       $.getScript('http://asimjalis.github.io/ipyn-ext/js/ipyn-toc.js')
-      </script>
 
 Heading Scroll Manager
 ----------------------
@@ -36,9 +39,10 @@ Why should I use this?
 
 How can I use this?
 
-- Insert the following lines to a markdown cell near the top of your
-  IPython Notebook.
+- Add the following lines in a code cell at the bottom of your
+  notebook and hit the play button.
 
-      <script>
+      %%javascript
       $.getScript('http://asimjalis.github.io/ipyn-ext/js/ipyn-heading-scroll-manager.js')
-      </script>
+
+- Use <SPACE> and Shift-<SPACE> to test the scrolling.
