@@ -1,32 +1,10 @@
 /*
+ipyn-toc - generates table of contents
 
-To use add these lines to a markdown cell near the top of your IPython Notebook. 
+See README.md for how to use it.
 
-<h1 id="tocheading">Table of Contents</h1>
-<div id="toc"></div>
-<script>
-$.getScript('http://asimjalis.github.io/ipyn-ext/ipyn-toc.js')
-$.getScript('http://localhost:5555/2015-07-26-ipyn-scroll-manager-code.js')
-</script>
-
-Based on 
-https://kmahelona.github.io/ipython_notebook_goodies/ipython_notebook_toc.js
-
+Based on https://kmahelona.github.io/ipython_notebook_goodies/ipython_notebook_toc.js
 */
-
-// Converts integer to roman numeral
-function romanize(num) {
-    var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
-	roman = '',
-	    i;
-	for ( i in lookup ) {
-	    while ( num >= lookup[i] ) {
-		roman += i;
-		num -= lookup[i];
-	    }
-	}
-	return roman;
- }
 
 // Builds a <ul> Table of Contents from all <headers> in DOM
 function createTOC(){

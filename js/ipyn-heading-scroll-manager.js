@@ -1,16 +1,11 @@
 /*
+ipyn-heading-scroll-manager - enables scrolling to next/previous h1/h2 heading.
 
-To use add these lines to a markdown cell near the top of your IPython Notebook. 
-
-<script>
-$.getScript('http://asimjalis.github.io/ipyn-ext/ipyn-heading-scroll-manager.js')
-</script>
+See README.md for how to use it.
 
 Based on: 
-
 - How to write custom ScrollManager: https://stash.csiro.au/users/kru03a/repos/ipydev/browse/IPython/html/static/notebook/js/scrollmanager.js
 - How to integrate custom ScrollManager into IPython: https://github.com/ipython/ipython/issues/8443
-
 */
 
 require(['notebook/js/scrollmanager'], function(sm) {
