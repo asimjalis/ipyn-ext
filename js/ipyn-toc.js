@@ -12,9 +12,17 @@ function createTOC(){
     var level = 0;
     var levels = {}
     $('#toc').html('');
+    var firstHeadingId = '';
 
     $(":header").each(function(i){
-	    if (this.id=='tocheading'){return;}
+        if (i == 0) { firstHeadingId = this.id }
+	    if (this.id == 'Table-of-Contents') { return }
+
+        // Make each heading link back to TOC but hide its linkiness.
+        var targetRef = '#' + firstHeadingId
+        $(this).wrap(
+            '<a href="' + targetRef + '"' + 
+            ' style="text-decoration:none;color:rgb(0,0,0)">')
         
 	    titleText = this.innerHTML;
 	    openLevel = this.tagName[1];
