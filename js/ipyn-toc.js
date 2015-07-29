@@ -16,7 +16,9 @@ function createTOC(){
 
     $(":header").each(function(i){
         if (i == 0) { firstHeadingId = this.id }
-	    if (this.id == 'Table-of-Contents') { return }
+	    if (this.id == 'Table-of-Contents' || $(this).attr('class') == 'tocheading' ) { 
+            return 
+        }
 
         // Make each heading link back to TOC but hide its linkiness.
         var targetRef = '#' + firstHeadingId
