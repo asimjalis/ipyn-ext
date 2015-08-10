@@ -12,7 +12,7 @@ require(['notebook/js/scrollmanager'], function(sm) {
     var MyScrollManager = function(notebook, options) {
         sm.ScrollManager.apply(this, [notebook, options]);
         options = options || {};
-        this._level = options.heading_level || 2;
+        this._level = options.heading_level || 3;
     };
 
     // By default revert to parent's behavior.
@@ -58,6 +58,6 @@ require(['notebook/js/scrollmanager'], function(sm) {
     };
 
     IPython.notebook.scroll_manager = new MyScrollManager(IPython.notebook,
-            {'heading_level':2,'animation_speed':1000});
+            {'heading_level':3,'animation_speed':1000});
 });
 
