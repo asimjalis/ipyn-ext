@@ -13,12 +13,14 @@ function createTOC(){
     var levels = {}
     $('#toc').html('');
     var firstHeadingId = '';
+    var leafNodeCount = 0;
 
     $(":header").each(function(i){
+        // Remember first header.
         if (i == 0) { firstHeadingId = this.id }
-            if (this.id == 'Table-of-Contents' || $(this).attr('class') == 'tocheading' ) { 
-            return 
-        }
+
+        // TOC should not have an entry for itself.
+        if (this.id == 'Table-of-Contents' || $(this).attr('class') == 'tocheading' ) { return }
 
         // Make each heading link back to TOC but hide its linkiness.
         var targetRef = '#' + firstHeadingId
@@ -26,36 +28,57 @@ function createTOC(){
             '<a href="' + targetRef + '"' + 
             ' style="text-decoration:none;color:rgb(0,0,0)">')
         
-            titleText = this.innerHTML;
-            openLevel = this.tagName[1];
+        titleText = this.innerHTML;
 
-            if (levels[openLevel]){
-                levels[openLevel] += 1;
-            } else{
-                levels[openLevel] = 1;
-            }
+        // From h1 get 1, from h2 get 2, etc.
+        openLevel = this.tagName[1];
 
-            if (openLevel > level) {
-                toc += (new Array(openLevel - level + 1)).join('<ul class="toc">');
-            } else if (openLevel < level) {
-                toc += (new Array(level - openLevel + 1)).join("</ul>");
-                for (i=level;i>openLevel;i--){levels[i]=0;}
-            }
-
-            level = parseInt(openLevel);
-
-            if (this.id==''){this.id = this.innerHTML.replace(/ /g,"-")}
-            var anchor = this.id;
+        // If the last entry was the same hN then increment.
+        if (levels[openLevel]) {
+            levels[openLevel] += 1;
+        } 
         
-            toc += '<li><a href="#' + anchor + '">' 
-                +  levels[openLevel].toString() 
-                + '. ' + titleText + '</a></li>';
-        });
-    
-    if (level) {
-        toc += (new Array(level + 1)).join("</ul>");
-    }
+        // Otherwise it is a new hN, so set it to 1.
+        else {
+            levels[openLevel] = 1;
+        }
+
+        // We pushed down one level deeper.
+        if (openLevel > level) {
+            toc += (new Array(openLevel - level + 1)).join('<ul class="toc">');
+        } 
+        
+        // We pulled up a level.
+        else if (openLevel < level) {
+            // So last entry was a leaf-node.
+            leafNodeCount += 1
+
+            // Close out this level.
+            toc += (new Array(level - openLevel + 1)).join("</ul>");
+            for (i=level;i>openLevel;i--) { levels[i]=0; }
+        }
+
+        // We are at the same level as the last entry.
+        else {
+            // So last entry was a leaf-node.
+            leafNodeCount += 1
+        }
+
+        level = parseInt(openLevel);
+
+        if (this.id==''){this.id = this.innerHTML.replace(/ /g,"-")}
+        var anchor = this.id;
+        toc += '<li><a href="#' + anchor + '">' 
+            +  levels[openLevel].toString() 
+            + '. ' + titleText + '</a></li>';
+    });
+
+    if (level) { toc += (new Array(level + 1)).join("</ul>"); }
+
+    // Prepend leaf-node count.
+    toc = "<p>Sections: " + leafNodeCount + "</p>" + toc
  
+    // Stick this into the document.
     $('#toc').append(toc);
 
 };
